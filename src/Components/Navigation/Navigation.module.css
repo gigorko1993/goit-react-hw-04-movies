@@ -1,0 +1,19 @@
+.Header {
+  color: red;
+}
+
+.NavList {
+  color: black;
+}
+
+.NavItem {
+  color: black;
+}
+
+.NavLink {
+  color: cornflowerblue;
+}
+
+.NavLinkActive {
+  color: darkcyan;
+}

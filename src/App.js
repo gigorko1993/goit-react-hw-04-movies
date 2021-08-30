@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
-function App() {
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
+import Navigation from './Components/Navigation';
+
+const loader = (
+  <Loader
+    type="ThreeDots"
+    color="rgba(238, 137, 23, 0.874)"
+    height={100}
+    width={100}
+  />
+);
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navigation />
+      <Switch>
+        <Suspense fallback={loader}>
+          <Route exact path="/"></Route>
+          <Redirect to="/" />
+        </Suspense>
+      </Switch>
+    </>
   );
 }
-
-export default App;
