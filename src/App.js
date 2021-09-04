@@ -29,7 +29,7 @@ export default function App() {
       <Suspense fallback={loader}>
         <Switch>
           <Route exact path="/">
-            <HomePage loader={loader} />
+            <HomePage />
           </Route>
           <Route exact path="/movies">
             <div>movies</div>

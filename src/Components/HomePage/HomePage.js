@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as fetchMovies from '../../api';
 
-export default function HomeView() {
+export default function HomePage() {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
