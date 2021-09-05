@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import s from './SearchBar.module.css';
+
 export default function Searchbar({ onSubmit }) {
   const [movieName, setMovieName] = useState('');
 
@@ -16,7 +18,7 @@ export default function Searchbar({ onSubmit }) {
   return (
     <div>
       <header>
-        <form onSubmit={handleSubmit}>
+        <form className={s.Searchbar} onSubmit={handleSubmit}>
           <input
             type="text"
             autoComplete="off"

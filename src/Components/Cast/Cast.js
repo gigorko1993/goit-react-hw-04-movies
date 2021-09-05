@@ -2,6 +2,8 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import * as fetchMovies from '../../api';
 
+import s from './Cast.module.css';
+
 export default function MoviesCast() {
   const [actors, setActors] = useState(null);
   const [error, setError] = useState(null);
@@ -19,19 +21,27 @@ export default function MoviesCast() {
   }, [moviesId]);
 
   return (
-    <ul>
+    <>
       <p>{error}</p>
-      {actors &&
-        actors.map(actor => (
-          <li key={actor.cast_id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-              alt={actor.name}
-            />
-            <p>{actor.name}</p>
-            <p>Character: {actor.character}</p>
-          </li>
-        ))}
-    </ul>
+      <ul className={s.castList}>
+        {actors &&
+          actors.map(actor => (
+            <li key={actor.cast_id}>
+              {actor.profile_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                  alt={actor.name}
+                />
+              ) : (
+                <div>
+                  <p className={s.thumb}>No Photo</p>
+                </div>
+              )}
+              <p>{actor.name}</p>
+              <p>Character: {actor.character}</p>
+            </li>
+          ))}
+      </ul>
+    </>
   );
 }
