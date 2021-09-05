@@ -4,14 +4,11 @@ import { Route, Switch } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-import Navigation from './Components/Navigation';
-
-const HomePage = lazy(() => {
-  import('./Components/HomePage' /* webpackChunkName: "HomePage" */);
-});
-const NotFoundPage = lazy(() => {
-  import('./Components/Page404' /* webpackChunkName: "PageNotFound" */);
-});
+const Navigation = lazy(() => import('./Components/Navigation'));
+const HomePage = lazy(() => import('./Components/HomePage'));
+const NotFoundPage = lazy(() => import('./Components/Page404'));
+const MoviesPage = lazy(() => import('./Components/MoviesPage'));
+const MovieDetailPage = lazy(() => import('./Components/MovieDetail'));
 
 const loader = (
   <Loader
@@ -25,14 +22,17 @@ const loader = (
 export default function App() {
   return (
     <>
-      <Navigation />
       <Suspense fallback={loader}>
+        <Navigation />
         <Switch>
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route exact path="/movies">
-            <div>movies</div>
+          <Route path="/movies" exact>
+            <MoviesPage />
+          </Route>
+          <Route path="/movies/:movieId">
+            <MovieDetailPage />
           </Route>
           <Route>
             <NotFoundPage />

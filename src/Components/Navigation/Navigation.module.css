@@ -1,19 +1,26 @@
 .Header {
-  color: red;
+  background-color: rgba(9, 9, 241, 0.3);
+  padding: 40px;
 }
 
 .NavList {
+  display: flex;
   color: black;
+  padding: 0;
+  margin: 0;
 }
 
-.NavItem {
-  color: black;
+.NavItem:not(:last-child) {
+  margin-right: 30px;
 }
 
 .NavLink {
-  color: cornflowerblue;
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .NavLinkActive {
-  color: darkcyan;
+  color: rgb(39, 117, 129);
+  text-decoration: underline;
 }
